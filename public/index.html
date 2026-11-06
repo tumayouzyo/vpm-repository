@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T_Y_Tools — VPM Repository</title>
+<style>
+  :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #171b23; color: #e9edf5; }
+  body { max-width: 760px; margin: 0 auto; padding: 64px 24px; line-height: 1.8; }
+  h1 { margin-bottom: 0; } .muted { color: #aeb7c9; }
+  a { color: #a7cfff; } .button { display: inline-block; background: #a7cfff; color: #152236; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+  code { overflow-wrap: anywhere; } article { margin-top: 20px; border: 1px solid #3b4454; border-radius: 10px; padding: 20px; }
+  article h3 { margin-top: 0; } footer { margin-top: 56px; border-top: 1px solid #3b4454; padding-top: 16px; }
+</style>
+<h1>T_Y_Tools</h1>
+<p class="muted">VRChat向けUnity EditorツールのVPMリポジトリ。</p>
+<p><a class="button" href="vcc://vpm/addRepo?url=https%3A%2F%2Ftumayouzyo.github.io%2Fvpm-repository%2Findex.json">VCCに追加</a></p>
+<p>VCCの Settings → Packages → Add Repository からも登録できる。</p>
+<p><code>https://tumayouzyo.github.io/vpm-repository/index.json</code></p>
+<h2>パッケージ</h2>
+<div id="packages">読み込み中…</div>
+<footer class="muted">責任者: <a href="https://github.com/tumayouzyo">tumayouzyo</a> · 作成者: Codex<br>
+<a href="https://github.com/tumayouzyo/vpm-repository">GitHub</a> · 各ツールの利用条件はパッケージのライセンスを参照。</footer>
+<script>
+  fetch('./index.json').then(r => { if (!r.ok) throw Error(r.status); return r.json(); }).then(repo => {
+    const container = document.getElementById('packages');
+    container.textContent = '';
+    for (const [id, entry] of Object.entries(repo.packages)) {
+      const versions = Object.values(entry.versions);
+      const stable = versions.filter(v => !v.version.includes('-'));
+      const candidates = stable.length ? stable : versions;
+      candidates.sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
+      const pkg = candidates[0];
+      const card = document.createElement('article');
+      const title = document.createElement('h3'); title.textContent = pkg.displayName;
+      const detail = document.createElement('p'); detail.textContent = pkg.description;
+      const version = document.createElement('p'); version.className = 'muted'; version.textContent = `${id} · ${pkg.version}`;
+      card.append(title, detail, version); container.append(card);
+    }
+    if (!container.children.length) container.textContent = 'パッケージの公開準備中。';
+  }).catch(() => { document.getElementById('packages').textContent = '一覧を取得できませんでした。時間を置いて再読み込みしてください。'; });
+</script>
+</html>

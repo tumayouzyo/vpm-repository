@@ -1,0 +1,7 @@
+{
+  "name": "T_Y_Tools",
+  "id": "io.github.tumayouzyo.tools",
+  "url": "https://tumayouzyo.github.io/vpm-repository/index.json",
+  "author": "tumayouzyo",
+  "repositories": ["tumayouzyo/FXFacialAssistant"]
+}
