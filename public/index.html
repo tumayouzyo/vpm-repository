@@ -12,14 +12,14 @@
   article h3 { margin-top: 0; } footer { margin-top: 56px; border-top: 1px solid #3b4454; padding-top: 16px; }
 </style>
 <h1>T_Y_Tools</h1>
-<p class="muted">VRChat向けUnity EditorツールのVPMリポジトリ。</p>
+<p class="muted">VRChat向けUnity EditorツールのVPMリポジトリ</p>
 <p><a class="button" href="vcc://vpm/addRepo?url=https%3A%2F%2Ftumayouzyo.github.io%2Fvpm-repository%2Findex.json">VCCに追加</a></p>
-<p>VCCの Settings → Packages → Add Repository からも登録できる。</p>
+<p>VCCの Settings → Packages → Add Repository でも可</p>
 <p><code>https://tumayouzyo.github.io/vpm-repository/index.json</code></p>
 <h2>パッケージ</h2>
 <div id="packages">読み込み中…</div>
 <footer class="muted">責任者: <a href="https://github.com/tumayouzyo">tumayouzyo</a> · 作成者: Codex<br>
-<a href="https://github.com/tumayouzyo/vpm-repository">GitHub</a> · 各ツールの利用条件はパッケージのライセンスを参照。</footer>
+<a href="https://github.com/tumayouzyo/vpm-repository">GitHub</a> · 各ツールの利用条件はパッケージのライセンスを参照</footer>
 <script>
   fetch('./index.json').then(r => { if (!r.ok) throw Error(r.status); return r.json(); }).then(repo => {
     const container = document.getElementById('packages');
