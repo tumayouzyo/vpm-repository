@@ -3,7 +3,7 @@
 **責任者:** [tumayouzyo](https://github.com/tumayouzyo)  
 **作成者:** Codex
 
-VRChat向けUnityツールの共通VPMリポジトリ。
+VRChat向けUnityツールの共通VPMリポジトリ
 
 [配布ページ](https://tumayouzyo.github.io/vpm-repository/)
 
